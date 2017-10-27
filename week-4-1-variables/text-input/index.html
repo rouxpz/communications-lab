@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+	<title>Text Input Example</title>
+</head>
+
+
+<body>
+	<div id="result"></div><br>
+	<input id="userInput"><br>
+	<button onclick="populate()">Click me!</button>
+
+	<script>
+		var v = "";
+		function populate() {
+			v = v + "<br>" + document.getElementById("userInput").value;
+			document.getElementById("result").innerHTML = v;
+		}
+	</script>
+</body>

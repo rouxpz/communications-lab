@@ -1,0 +1,21 @@
+h3 {
+	color: blue;
+	font-family: Helvetica;
+}
+
+.targeted {
+	color: purple;
+}
+
+
+.left {
+	display: inline-block;
+	float: left;
+	width:50%;
+}
+
+.right {
+	display: inline-block;
+	float: right;
+	width:50%;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+
+<body>
+
+	<h1>This is a heading for this page.</h1>
+	<p class="decorated">This is a paragraph with a class.</p>
+	<p class="decorated">Another paragraph with a class.</p>
+	<p class="decorated">One more with a class!</p>
+	<p>This paragraph does not have a class.</p>
+	<br><br>
+	<a href="http://ima.nyu.sh">Link to IMA Site</a>
+	<br>
+	<a href="http://shanghai.nyu.edu">Link to NYU Shanghai site</a>
+	<br><br>
+	<button onclick="changeDecoration()">Click to change the decoration of certain elements!</button>
+
+	<script>
+
+		function changeDecoration() {
+			
+			//getting elements by class name returns an array. you then have to iterate through the list to set properties for all of the included members.
+			var d = document.getElementsByClassName("decorated");
+
+			for (var i = 0; i < d.length; i++) {
+				d[i].style.fontFamily = "Helvetica";
+				d[i].style.fontSize = "20px";
+				d[i].style.color = "red";
+			}
+
+			//getting elements by tag name works exactly the same way
+			var links = document.getElementsByTagName("a");
+
+			for (var i = 0; i < links.length; i++) {
+				links[i].style.textDecoration = "none";
+				links[i].style.color = "green";
+				links[i].style.fontSize = "10px";
+			}
+		}
+
+	</script>
+
+
+</body>

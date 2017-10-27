@@ -1,0 +1,43 @@
+div {
+	padding-left: 10px;
+	padding-top: 5px;
+}
+.content {
+	height: 1000px;
+}
+
+.static {
+	background-color: #faebd7;
+	height: 50px;
+	color: black;
+}
+
+.relative {
+	background-color: #8b9dc3;
+	position: relative;
+	left: 20px;
+	height: 50px;
+	color: white;
+}
+
+.absolute {
+	background-color: #8b9dc3;
+	position: absolute;
+	left: 50px;
+	top: 1300px;
+	height: 50px;
+	width: 350px;
+	color: white;
+}
+
+.fixed {
+	background-color: #17b566;
+	position: fixed;
+	right: 0px;
+	top: 0px;
+	height: 70px;
+	width: 350px;
+	color: white;
+}
+
+

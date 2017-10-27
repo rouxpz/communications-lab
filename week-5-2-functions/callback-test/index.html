@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<head>
+
+</head>
+
+<body id="body">
+	<button id="btn" onclick="startTimer()">Start Timer</button>
+
+	<script type="text/javascript">
+
+		var c = 0;
+
+		function startTimer() {
+			setTimeout(changeBackground, 3000);
+			setInterval(countClock, 1000);
+		}
+
+		function changeBackground() {
+			var b = document.getElementsByTagName("body");
+
+			for (var i = 0; i < b.length; i++) {
+				b[i].style.backgroundColor = "blue";
+			}
+		}
+
+		function countClock() {
+			c++;
+			console.log(c);
+		}
+
+
+	</script>
+
+</body>

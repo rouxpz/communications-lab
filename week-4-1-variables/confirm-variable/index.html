@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<head>
+	<title>Confirm: With Variables</title>
+</head>
+
+<body>
+	<button onclick="confirmBox()">Click to launch a confirm box!</button>
+	
+	<p id="result"></p>
+
+	<script type="text/javascript">
+		var c;
+
+		function confirmBox() {
+			c = confirm("Are you sure you want to continue?");
+			document.getElementById("result").innerHTML = c;
+		}
+
+
+
+	</script>
+
+</body>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+	<title>Mouse Position Example</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+
+<body>
+	<div id="clickArea" onmousemove="trackMouse()"></div>
+	<p>Hover over the above area to see the mouse's location.</p>
+	<p id="result"></p>
+
+	<script>
+		function trackMouse() {
+			var x = event.clientX;
+			var y = event.clientY;
+			document.getElementById("result").innerHTML = "The mouse is at " + x + " x and " + y + " y."
+		}
+	</script>
+
+</body>

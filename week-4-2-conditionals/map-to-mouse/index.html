@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+
+	<body onmousemove="changeSize()">
+		<div id="box"></div>
+
+		<script>
+			function changeSize() {
+				var inputX = event.clientX;
+				var inputY = event.clientY;
+
+				document.getElementById("box").style.width = inputX + "px";
+				document.getElementById("box").style.height = inputY + "px";
+			}
+		</script>	
+	</body>

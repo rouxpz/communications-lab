@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<head>
+	<title>Interactive Music Box</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body onload="playAudio()">
+	<p>Click on any box to start a drum loop. Click again to stop it.</p>
+	<script>
+		//initialize arrays for div background colors and boolean states
+		var colours = ["red", "orange", "yellow", "green", "blue", "purple"];
+		var states = [false, false, false, false, false, false];
+
+		//create HTML elements for both divs and audio
+		for (var i = 0; i < colours.length; i++) {
+			var d = document.createElement("DIV");
+			d.className = "box";
+			d.id = "box" + i;
+			d.style.backgroundColor = colours[i];
+
+			document.body.appendChild(d);
+
+			var a = document.createElement("AUDIO");
+			a.id = "audio" + i;
+			a.loop = true;
+			var s = document.createElement("SOURCE");
+			s.src = "audio/" + i + ".wav";
+
+			a.appendChild(s);
+			document.body.appendChild(a);
+
+		}
+
+
+
+		
+
+		function playAudio() {
+
+			//get all items classed with "box" and iterate through
+			var boxes = document.getElementsByClassName("box");
+			for (var i = 0; i < boxes.length; i++) {
+
+				//this executes the following on click of each individual div. the "this" property is a self-referential variable that is specifically referring to the element itself.
+				boxes[i].onclick = function(e) {
+					console.log(this.id);
+
+					//here we are grabbing the index of our current div, because we cannot refer to "i" inside this function.
+					var newID = this.id;
+
+					//splitting a string; this returns an array with both sides of the split. the second element is the one we want.
+					newID = newID.split("x"); 
+					console.log(newID[1]);
+
+					//grabbing the boolean state at the correct index
+					var state = states[parseInt(newID[1])];
+
+					//reversing that boolean state
+					state = !state;
+
+					//overwriting that state with what we have turned it into
+					states[parseInt(newID[1])] = state;
+					console.log(state);
+
+					//grabbing our audio
+					var sound = document.getElementById("audio" + newID[1]);
+
+					//playing or stopping audio based on what the boolean state is
+					if (state === true) {
+						this.style.backgroundColor = "black";
+						sound.play();
+					} else {
+						this.style.backgroundColor = colours[parseInt(newID[1])];
+						sound.pause();
+						sound.currentTime = 0;
+					}
+
+				}
+			}
+
+			//console.log(document.getElementsByTagName("audio"));
+		}
+
+	</script>
+
+</body>

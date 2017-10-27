@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+	<title>Typing Tracking Example</title>
+</head>
+
+
+<body>
+	<input id="typingArea" onkeyup="trackKeys()">
+	<button onclick="saveText()">Click to save</button>
+	<p><strong>This is what has been entered into the text box:</strong></p>
+	<p id="result"></p>
+	<p><strong>This is the cumulative text:</strong></p>
+	<p id="total"></p>
+
+	<script>
+		var totalText = '';
+		var tempText;
+
+		function trackKeys() {
+			tempText = document.getElementById("typingArea").value;
+			document.getElementById("result").innerHTML = tempText;
+		}
+
+		function saveText() {
+			totalText = totalText + tempText + "<br>";
+			document.getElementById("total").innerHTML = totalText;
+		}
+	</script>
+
+</body>

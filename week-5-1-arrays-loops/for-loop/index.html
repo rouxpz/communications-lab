@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body onload="addBox()">
+
+	<script>
+
+		function addBox() {
+			for (var i = 0; i < 10; i++) {
+				var d = document.createElement("DIV");
+				d.className = "box";
+				document.body.appendChild(d);
+			}
+		}
+
+	</script>
+
+
+</body>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+
+<body>
+
+	<div id="colorChange"></div><br>
+	<button onclick="changeColor()">Click me to change the div's color</button>
+
+	<script>
+		function changeColor() {
+			var input = confirm("Change this color to pink?");
+
+			if (input == true) {
+				document.getElementById("colorChange").style.backgroundColor = "pink";
+			}
+		}
+	</script>
+	
+</body>

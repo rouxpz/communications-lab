@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+
+<body>
+	
+	<div id="colorChange" onclick="changeColor()"></div><br>
+
+	<p>Click on the box to change its color. The color depends on where your mouse is located when you click.</p>
+
+	<script>
+		function changeColor() {
+			var xpos = event.clientX;
+
+			if (xpos > 350) {
+				document.getElementById("colorChange").style.backgroundColor = "pink";
+			} else if (xpos > 200) {
+				document.getElementById("colorChange").style.backgroundColor = "green";
+			} else {
+				document.getElementById("colorChange").style.backgroundColor = "yellow";
+			}
+		}
+	</script>
+
+</body>

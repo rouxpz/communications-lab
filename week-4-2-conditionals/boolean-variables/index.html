@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+
+<body>
+
+	<div id="colorChange"></div><br>
+	<button onclick="changeColor()">Click me to toggle the div's color</button>
+
+	<script>
+		var on = false;
+
+		function changeColor() {
+			on = !on;
+			
+			if (on == true) {
+				document.getElementById("colorChange").style.backgroundColor = "pink";
+			} else if (on == false) {
+				document.getElementById("colorChange").style.backgroundColor = "blue";
+			}
+
+		}
+	</script>
+	
+</body>

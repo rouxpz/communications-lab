@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+	<title>Variable Scope Example</title>
+
+</head>
+
+
+<body>
+	<div id="result"></div><br>
+	<button onclick="nextText()">Click me!</button>
+
+	<script>
+		// var c;
+
+		function nextText() {
+			c = "New text!";
+			document.getElementById("result").innerHTML = c;
+		}
+
+		console.log(c);
+	</script>
+
+</body>

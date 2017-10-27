@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+</head>
+
+<body>
+	
+	<input id="userInput">
+	<button onclick="addFive()">Click to add 5 to the number</button>
+	<p id="result"></p>
+
+	<script>
+		function addFive() {
+			var i = document.getElementById("userInput").value;
+			var n = calculate(i);
+			document.getElementById("result").innerHTML = "The result is " + n;
+		}
+
+		function calculate(input) {
+			return parseInt(input) + 5;
+		}	
+	</script>
+
+</body>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<head>
+	<title>SetInterval Example</title>
+</head>
+
+<body>
+	<button onclick="setInterval(changeBackground, 1000)">Click</button>
+
+	<script type="text/javascript">
+
+		var on = false;
+
+		function changeBackground() {
+			on = !on;
+
+			if (on) {
+				document.body.style.backgroundColor = "blue";
+			} else {
+				document.body.style.backgroundColor = "red";
+			}
+		}
+
+	</script>
+</body>

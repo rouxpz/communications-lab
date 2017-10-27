@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+	<title>String Concatenation Example</title>
+</head>
+
+<body>
+	<div id="result"></div><br>
+	<button onclick="addText()">Click to change text</button>
+	<script>
+		var c = "Hello world!"
+		document.getElementById("result").innerHTML = c;
+
+		function addText() {
+			c = c + " This is my variable!"
+			console.log(c);
+			document.getElementById("result").innerHTML = c;
+		}
+	</script>
+</body>

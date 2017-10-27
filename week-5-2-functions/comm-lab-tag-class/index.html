@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+
+</head>
+
+<body>
+	<h1>This is another example for Comm Lab.</h1>
+
+	<p class="toChange">This is classed as to change.</p>
+	<p class="toChange">So is this one.</p>
+	<p class="toChange">This one too!</p>
+	<p>This one is not.</p>
+
+	<a href="http://ima.nyu.sh">Link to IMA Site</a><br>
+	<a href="http://shanghai.nyu.edu">Link to NYUSH Site</a><br>
+
+	<button onclick="changeStyle()">Click to change styling.</button>
+
+	<script type="text/javascript">
+		
+		function changeStyle() {
+			var p = document.getElementsByClassName("toChange");
+			var a = document.getElementsByTagName("a");
+			var h = document.getElementsByTagName("h1");
+
+			for (var i = 0; i < p.length; i++) {
+				p[i].style.color = "red";
+				p[i].style.fontFamily = "Arial";
+			}
+
+			for (var i = 0; i < a.length; i++) {
+				a[i].style.color = "green";
+				a[i].style.fontFamily = "Monaco";
+				a[i].style.textDecoration = "none";
+			}
+
+			for (var i = 0; i < h.length; i++) {
+				h[i].style.color = "orange";
+			}
+			
+		}
+
+	</script>
+
+</body>
