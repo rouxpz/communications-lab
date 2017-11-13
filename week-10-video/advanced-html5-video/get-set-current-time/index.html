@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+</head>
+
+<body>
+	<video id="vid" width="640">
+		<source src="bolt.mp4" type="video/mp4">
+		Your browser does not support video.
+	</video>
+	<br>
+	<button onclick="playVideo()">Click to play</button>
+	<button onclick="pauseVideo()">Click to pause</button>
+	<button onclick="setTime()">Click to rewind to the beginning</button>
+	<br>
+	<p id="currentTime"></p>
+
+	<script>
+
+	var v = document.getElementById("vid");
+
+	function playVideo() {
+		v.play();
+	}
+
+	function pauseVideo() {
+		v.pause()
+
+		var t = document.getElementById("currentTime");
+		t.innerHTML = "The current position of the video is " + v.currentTime;
+	}
+
+
+	function setTime() {
+		v.currentTime = 0;
+
+		var t = document.getElementById("currentTime");
+		t.innerHTML = "The current position of the video is " + v.currentTime;
+	}
+
+	</script>
+</body>

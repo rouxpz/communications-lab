@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<head>
+	<title>Button: Source</title>
+</head>
+
+<body>
+	<video controls autoplay id="myVideo" height="500">
+		<source src="video/bolt.mp4" type="video/mp4">
+		This browser does not support video.
+	</video>
+	<br>
+	<button onclick="changeSource()">Click to change source video</button>
+
+	<script type="text/javascript">
+
+	var counter = 0;
+	var mainVid = document.getElementById("myVideo");
+
+	function changeSource() {
+
+		if (counter === 0) {
+			mainVid.src = "video/first.mp4";
+			counter++;
+		} else if (counter === 1) {
+			mainVid.src = "video/second.mp4";
+			counter = 2;
+		} else {
+			mainVid.src = "video/bolt.mp4";
+			counter = 0;
+		}
+		
+	}
+
+	</script>
+
+</body>

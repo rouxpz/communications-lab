@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<head>
+	<title>Current Time Popups</title>
+</head>
+
+<body>
+	<video autoplay id="myVideo">
+		<source src="video/bolt.mp4" type="video/mp4">
+		This browser does not support video.
+	</video>
+
+	<script type="text/javascript">
+
+	var vid = document.getElementById("myVideo");
+	var window1 = false;
+	var window2 = false;
+	var w1;
+
+	setInterval(checkTime, 200);
+
+	function checkTime() {
+		if (vid.currentTime >= 10 && window2 === false) {
+			console.log("window 2 opens");
+			console.log("window 1 closes");
+
+			w1.close();
+			window.open("popups/window2.html", '', 'width=500,height=250,top=200,left=500');
+			window2 = true;
+		} else if (vid.currentTime >= 5 && window1 === false) {
+			console.log("window 1 opens");
+			w1 = window.open("popups/window1.html", '', 'width=500,height=250,top=0,left=0');
+			window1 = true;
+		}
+	}
+
+	</script>
+
+</body>

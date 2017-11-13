@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+	<title>Mouse Tracking on Video Example</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+	<video id="vid" width="640" onclick="trackMouse()" autoplay>
+		<source src="video/bolt.mp4" type="video/mp4">
+		Your browser does not support video.
+	</video>
+	<p>Click on either side of the video to change out the source content.</p>
+
+	<script>
+
+		function trackMouse() {
+			var xpos = event.clientX;
+			var ypos = event.clientY;
+			console.log(xpos + ", " + ypos);
+
+			if (xpos >= 300) {
+				console.log("selected the right thing!");
+				document.getElementById("vid").src = "video/first.mp4";
+			} else {
+				document.getElementById("vid").src = "video/second.mp4";
+			}
+		}
+		
+
+	</script>
+</body>

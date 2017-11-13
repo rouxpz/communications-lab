@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head>
+	<title>Current Time: Popup</title>
+</head>
+
+<body>
+	<video controls autoplay id="myVideo" height="500">
+		<source src="video/bolt.mp4" type="video/mp4">
+		This browser does not support video.
+	</video>
+	<p id="textToDisplay"></p>
+
+	<script type="text/javascript">
+
+	var mainVid = document.getElementById("myVideo");
+
+	setInterval(playVideo, 500);
+
+	function playVideo() {
+		if (mainVid.currentTime >= 25) {
+			document.getElementById("textToDisplay").innerHTML = "Click the button to navigate to a new page.<br><a href='http://ima.nyu.sh'><button>Click me!</button></a>"
+		} else if (mainVid.currentTime >= 10) {
+			document.getElementById("textToDisplay").innerHTML = "This guy can run really fast!"
+		} else if (mainVid.currentTime >= 3) {
+			document.getElementById("textToDisplay").innerHTML = "How fast can you run?"
+		}
+	}
+
+	</script>
+
+</body>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<head>
+	<title>Countdown Content Switch</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+	
+	<video id="vid" width="750">
+		<source src="video/bolt.mp4" type="video/mp4">
+	</video>
+	<br>
+	<button class="hideLater" onclick="playVideo()">Play video</button>
+	<br>
+	<p class="toHide" id="countdown"></p><br>
+	<button  class="toHide" onclick="newVideo('first')">First Option</button>
+	<button class="toHide" onclick="newVideo('second')">Second Option</button>
+
+	<script>
+
+		var vid = document.getElementById("vid");
+		var timer;
+		var counter = 0;
+		var show = document.getElementsByClassName("toHide");
+
+		function playVideo() {
+			vid.play();
+			timer = setInterval(checkVidTime, 1000);
+
+			hl = document.getElementsByClassName("hideLater");
+			hl[0].style.display = "none";
+		}
+
+		function checkVidTime() {
+			
+			// console.log(vid.currentTime);
+
+			if (vid.currentTime >= 5) {
+				console.log("START COUNTDOWN");
+				clearInterval(timer);
+				timer = setInterval(startCountdown, 1000);
+			}
+		}
+		
+		function startCountdown() {
+			console.log(counter);
+
+			for (var i = 0; i < show.length; i++) {
+				show[i].style.display = "inline-block";
+			}
+
+			show[0].innerHTML = 10 - counter + " seconds left!";
+
+			if (counter >= 10) {
+				console.log("STOP TIMER");
+				vid.src = "video/first.mp4"
+				clearInterval(timer);
+				for (var i = 0; i < show.length; i++) {
+					show[i].style.display = "none";
+				}
+			} else {
+				counter += 1;
+			}			
+		}
+
+		function newVideo(filename) {
+			clearInterval(timer);
+			console.log("First Option Chosen");
+			vid.src = "video/" + filename + ".mp4";
+			vid.autoplay = true;
+			for (var i = 0; i < show.length; i++) {
+					show[i].style.display = "none";
+			}
+			timer = setInterval(checkVidTime, 1000);
+			counter = 0;
+		}
+
+
+
+	</script>
+</body>
