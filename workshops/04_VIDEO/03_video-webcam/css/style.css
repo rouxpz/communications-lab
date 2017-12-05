@@ -1,0 +1,18 @@
+#cam, #canvas{
+	display: none;
+}
+
+.outputImg{
+	width: 10%;
+	display: block;
+	position: relative;
+	float: left;
+}
+
+@keyframes changeHue{
+	from{
+		filter: hue-rotate(0deg);
+	}to{
+		filter: hue-rotate(300deg);
+	}
+}
