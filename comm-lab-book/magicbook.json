@@ -1,0 +1,29 @@
+{
+  "title" : "My Book",
+  "destination" : "build/:build",
+  "files" : [
+    "content/toc.html",
+    "content/0-introduction.md",
+    "content/1-the-internet.md",
+    "content/2-building-internet.md"
+  ],
+  "builds" : [
+    {
+      "format" : "pdf",
+      "layout" : "layouts/pdf.html",
+      "stylesheets" : {
+        "files" : ["css/html.scss"]
+      }
+    },
+    {
+      "format" : "html",
+      "layout" : "layouts/html.html",
+      "stylesheets" : {
+        "files" : ["css/pdf.scss"]
+      },
+      "javascripts" : {
+        "files" : ["javascripts/scripts.js"]
+      }
+    }
+  ]
+}
