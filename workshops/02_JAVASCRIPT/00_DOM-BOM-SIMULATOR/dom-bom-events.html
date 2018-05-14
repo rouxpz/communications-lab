@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>DOM, BOM & Events</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<style>
+    .code-window{
+        margin-bottom: 3rem;
+    }
+
+    .code-result{
+        font-family: monospace;
+        overflow-y: scroll;
+        background-color: white;
+    }
+
+    #square{
+        width: 150px;
+        height: 150px;
+        background-color: pink;
+        margin: auto;
+    }
+
+    .mdl-checkbox{
+        width: initial;
+        margin-right: 2rem;
+    }
+
+    .event-opt{
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    #currDiv{
+        background-color: white;
+    }
+
+    #keyBox{
+        width: 100%;
+        background-color: white;
+    }
+</style>
+<body onkeyup="onkeyupEvent()" onkeydown="onkeydownEvent()" onkeypress="onkeypressEvent()">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="full-page-content">
+                <p style="width: 80%; display: block; margin: auto; background: white; border-radius: 24px; padding: 32px;"><b>Quick Guide</b>: In this javascript simulator, you will see a snippet of html element, followed by the code for that html element. There will be a textfield below that, with a 'RUN' button next to it. You can edit the text inside of the textfield, and it will run your input as javascript code and show you the result below. If the javascript code you entered has a visual effect, that will also be seen.</p>
+                <h4>DOM Objects</h4>
+                <h5><u><i>elements</i></u>:</h5>
+                <p>You can use javascript to get the html elements inside of the webpage. <i>document</i> will give you all the whole html code of the webpage. <i>document.body</i> will give you the html code inside of and including the &lt;body> tag of your webpage. You can get a more specific section of your html code by looking up the id of that element using the <i>getElementById()</i> function. Given that we have the particular html code below, try to figure out the javascript code for getting the &lt;p> tag with text "Javascript is fun!".</p>
+                <hr>
+                <div id="text-div">
+                    <p id="div-content">Javascript is fun!</p>
+                </div>
+                <pre>
+&lt;div id="text-div">
+	&lt;p id="div-content">Javascript is fun!&lt;/p>
+&lt;/div>
+	            </pre>
+                <hr>
+                <div class="code-window">
+                    <div style="width: calc(100% - 64px - 4rem); margin-right: 1rem" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" id="js-editor-1" type="text" name="tVal" value="document.body">
+                        <label class="mdl-textfield__label" for="js-editor-1">Your javascript code...</label>
+                    </div>
+                    <button onclick="runCode(this)" class="mdl-button mdl-js-button mdl-button--raised code-run">RUN</button>
+                    <pre class="code-result"></pre>
+                </div>
+                <p><b>Examples of code for selecting HTML elements</b>: You can try these in the above textfield!</p>
+                <pre>
+document
+document.body
+//returns the HTML element with the id of ‘text-div’
+document.getElementById('text-div')
+document.getElementById('div-content')
+                </pre>
+                <h5><u>Properties of DOM Elements</u>:</h5>
+                <p>You can do more than just looking up html elements with javascript. You can also look up specific properties that pertain to an HTML element. You are already familiar with some properties of HTML elements, but you just not might think of them as such. In the section of HTML below, we have an image tag, with 3 attributes: id, width and src. The attributes of an HTML element, that get written inside of the HTML tag, are part of properties of the HTML element. Therefore, you can look up the values of these properties of an HTML tag, as well as set them as some other value of your choice.</p>
+                <hr>
+                <h1 id="title">My Title</h1>
+                <img id="pattern" width="100%" src="img/img1.jpg">
+                <pre>
+&lt;h1 id="title">My Title!&lt;/h1>
+&lt;img id="pattern" width="100%" src="img/img1.jpg">
+	            </pre>
+                <hr>
+                <div class="code-window">
+                    <div style="width: calc(100% - 64px - 4rem); margin-right: 1rem" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" id="js-editor-2" type="text" name="tVal" value="document.getElementById('pattern').src">
+                        <label class="mdl-textfield__label" for="js-editor-2">Your javascript code...</label>
+                    </div>
+                    <button onclick="runCode(this)" class="mdl-button mdl-js-button mdl-button--raised code-run">RUN</button>
+                    <pre class="code-result"></pre>
+                </div>
+                <p><b>Examples of code for looking up properties of an &lt;img> element</b>:</p>
+                <pre>
+document.getElementById('pattern').id
+document.getElementById('pattern').width
+document.getElementById('pattern').height
+//if the HTML element is an image, returns the source (file path) if the image
+document.getElementById('pattern').src
+                </pre>
+                <p><b>Examples of code for looking up properties of general HTML elements</b>:</p>
+                <pre>
+document.getElementById('title').id
+//returns the width of the HTML element
+//the width includes the width of the content, padding-left and padding-right
+document.getElementById('title').clientWidth
+//returns the height of the HTML element
+//the height includes the height of the content, padding-top and padding-bottom
+document.getElementById('title').clientHeight
+//returns the content inside of the HTML element
+document.getElementById(title').innerHTML
+                </pre>
+                <p><b>Examples of code for setting properties of an &lt;img> element</b>:<br>
+                Note that in my <i>img</i> folder, there are 5 images called: img1.jpg, img2.jpg, img3.jpg, img4.jpg and img5.jpg.</p>
+                <pre>
+document.getElementById('pattern').id = "new-id"
+document.getElementById('pattern').width = 200
+document.getElementById('pattern').height = 500
+//if the DOM element is an image, sets the source (file path) if the image
+document.getElementById('pattern').src = "img/img2.jpg"
+                </pre>
+                <p><b>Examples of code for setting properties of general HTML elements</b>:</p>
+                <pre>
+document.getElementById('title').id = "new-id"
+//sets the content inside of the HTML element
+document.getElementById('title').innerHTML = "New text for my h1 tag!"
+                </pre>
+                <h5><u><i>element.style</i></u>:</h5>
+                <p>You can also look up the CSS styles applied to a particular HTML element as well as set them to a value of your choice. To refer to the css related to a particular HTML element, simply add <i>.style</i> after. If you want to look up / set a value of a particular CSS property, add another <i>.</i> (dot) and follow it by that CSS property. If the CSS property you want to look up / set has a - (dash) in its name, change the way it is written using camel casing. Camel casing is a way of writing compound / multiple words that usually replaces spaces, but in this cas dashs, by capitalizing the word that would usually come after the space / dash. For example, background-color can be rewritten as backgroundColor. Use the HTML code below to look up and set CSS properties in the textfield.</p>
+                <hr>
+                <div style="background-color: black; color: white; padding: 24px;" id="text-box">
+                    <p style="font-size: 24px; text-align: center; margin:0;" id="inner-text">Javascript is fun!</p>
+                </div>
+                <br>
+                <p><u>HTML</u>:</p>
+                <pre>
+&lt;div id="text-box">
+	&lt;p id="inner-text">Javascript is fun!&lt;/p>
+&lt;/div>
+	            </pre>
+                <p><u>CSS</u>:</p>
+                <pre>
+#text-box{
+    background-color: black;
+    color: white;
+    padding: 24px;
+}
+
+#inner-text{
+    font-size: 24px;
+    text-align: center;
+}
+	            </pre>
+                <hr>
+                <div class="code-window">
+                    <div style="width: calc(100% - 64px - 4rem); margin-right: 1rem" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" id="js-editor-3" type="text" name="tVal" value="document.getElementById('text-box').style.backgroundColor = 'pink'">
+                        <label class="mdl-textfield__label" for="js-editor-3">Your javascript code...</label>
+                    </div>
+                    <button onclick="runCode(this)" class="mdl-button mdl-js-button mdl-button--raised code-run">RUN</button>
+                    <pre class="code-result"></pre>
+                </div>
+                <p><b>Examples of code for looking up CSS properties of an HTML element</b>:</p>
+                <pre>
+document.getElementById('text-box').style.backgroundColor
+document.getElementById('text-box').style.color
+document.getElementById('text-box').style.padding
+document.getElementById('inner-text').style.fontSize
+document.getElementById('inner-text').style.textAlign
+                </pre>
+                <p><b>Examples of code for setting CSS properties of an HTML element</b>:</p>
+                <pre>
+document.getElementById('text-box').style.backgroundColor = "red"
+document.getElementById('text-box').style.color = "#cecece"
+document.getElementById('inner-text').style.fontSize = "48px"
+                </pre>
+                <h4>BOM Objects</h4>
+                <h5><u>Properties of BOM Objects</u>:</h5>
+                <div class="code-window">
+                    <div style="width: calc(100% - 64px - 4rem); margin-right: 1rem" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" id="js-editor-4" type="text" name="tVal" value="window.innerWidth">
+                        <label class="mdl-textfield__label" for="js-editor-4">Your javascript code...</label>
+                    </div>
+                    <button onclick="runCode(this)" class="mdl-button mdl-js-button mdl-button--raised code-run">RUN</button>
+                    <pre class="code-result"></pre>
+                </div>
+                <p><b>Examples of code for looking up properties of window object</b>:</p>
+                <pre>
+//returns the width of the browser window
+window.innerWidth
+//returns the height of the browser window
+window.innerHeight
+//returns the x position of the scroll
+window.scrollX
+//returns the y position of the scroll
+window.scrollY
+                </pre>
+                <h5><u>Methods of BOM Objects</u>:</h5>
+                <div class="code-window">
+                    <div style="width: calc(100% - 64px - 4rem); margin-right: 1rem" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" id="js-editor-5" type="text" name="tVal" value="window.scrollTo(0, 500)">
+                        <label class="mdl-textfield__label" for="js-editor-5">Your javascript code...</label>
+                    </div>
+                    <button onclick="runCode(this)" class="mdl-button mdl-js-button mdl-button--raised code-run">RUN</button>
+                    <pre class="code-result"></pre>
+                </div>
+                <p><b>Examples of code for using methods of window object</b>:</p>
+                <pre>
+//window.scrollTo(xpos, ypos)
+//scrolls the window to xpos from the left and ypos from the top
+//xpos and ypos are in pixels
+window.scrollTo(0, 100)
+//window.scrollBy(xnum, ynum)
+//scrolls by xnum amount towards the right and ynum amount towards the bottom every time this function is triggered
+//xnum and ynum are in pixels
+window.scrollBy(10, 50)
+                </pre>
+                <p><b>Examples of code for creating different styles of popup boxes</b>:</p>
+                <pre>
+//displays the alert message
+alert("This is an alert message!")
+//opens a confirm popup window with ‘OK’ and ‘Cancel’ buttons
+confirm("Please press OK to confirm!")
+//opens a prompt popup window with a place for users to enter in text
+prompt("What is your name?")
+                </pre>
+                <p><b>Example code for creating a popup window</b>:</p>
+                <pre>
+//window.open(url, name, specs);
+//name: _blank, _parent, _self, _top
+//specs: width (px), height (px), top (px), left (px)
+//to use specs, you must have a name argument
+window.open('http://ima.nyu.sh', '_blank', 'width=200, height=200, left=500, top=100')
+                </pre>
+                <p><b>Code for closing the current window</b>:</p>
+                <pre>
+window.close()
+                </pre>
+                <h4>DOM Events</h4>
+                <h5><u>Mouse Events</u>:</h5>
+                <hr>
+                <div id="square"></div>
+                <div class="event-opt" onchange="applyEvent()">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="onclick">
+                        <input type="checkbox" name="eVal" id="onclick" class="mdl-checkbox__input">
+                        <span class="mdl-checkbox__label">onclick</span>
+                    </label>
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="ondblclick">
+                        <input type="checkbox" name="eVal" id="ondblclick" class="mdl-checkbox__input">
+                        <span class="mdl-checkbox__label">ondblclick</span>
+                    </label>
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="onmouseover">
+                        <input type="checkbox" name="eVal" id="onmouseover" class="mdl-checkbox__input">
+                        <span class="mdl-checkbox__label">onmouseover</span>
+                    </label>
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="onmouseout">
+                        <input type="checkbox" name="eVal" id="onmouseout" class="mdl-checkbox__input">
+                        <span class="mdl-checkbox__label">onmouseout</span>
+                    </label>
+                    <button onclick="resetStyles()" class="mdl-button mdl-js-button mdl-button--raised">RESET</button>
+                </div>
+                <pre id="currDiv"></pre>
+                <hr>
+                <p></p>
+                <pre>
+function clickEvent(){
+    document.getElementById('click-div').style.backgroundColor = "red";
+}
+
+function dblclickEvent(){
+    document.getElementById('click-div').style.backgroundColor = "blue";
+}
+
+function onmouseoverEvent(){
+    document.getElementById('click-div').style.border = "solid 5px green";
+}
+
+function onmouseoutEvent(){
+    document.getElementById('click-div').style.border = "dotted 10px yellow";
+}
+                </pre>
+                <h5><u>Keyboard Events</u>:</h5>
+                <hr>
+                <div id="keyBox">
+                    <p id="keyInput">When you type, the keys you press will be shown here!</p>
+                </div>
+                <hr>
+                <p></p>
+                <pre>
+function onkeypressEvent(){
+    document.getElementById('keyInput').innerHTML = "You pressed: " +  event.key;
+}
+
+function onkeydownEvent(){
+    document.getElementById('keyBox').style.backgroundColor = "pink";
+}
+
+function onkeyupEvent(){
+    document.getElementById('keyBox').style.backgroundColor = "lightblue";
+}
+                </pre>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </main>
+</div>
+</body>
+<script src="js/background.js"></script>
+<script>
+    var currCode, codeEval, codeResult;
+    var currHTML;
+    var strHTML = "";
+    function runCode(currButton){
+        codeResult = currButton.nextElementSibling;
+        codeResult.style.height = "100%";
+        strHTML = "";
+
+        // console.log(currButton);
+        currCode = currButton.previousElementSibling.firstElementChild.value;
+        // console.log(currCode);
+
+        if(currCode.search('=') > -1){
+            doCode();
+        }else if(currCode.indexOf('(') > -1){
+            if(currCode.search('window') > -1 || currCode.search('alert')  > -1 || currCode.search('confirm') > -1 || currCode.search('prompt') > -1){
+                doCode();
+            }else{
+                getCode();
+            }
+        }
+        else{
+            getCode();
+        }
+    }
+
+    function getCode(){
+        if(currCode == "document"){
+            currCode = "document.documentElement";
+        }
+        codeEval = eval(currCode);
+
+        if(codeEval == null){
+            currHTML = 'Error! Please double check your script!'
+            // strHTML = currHTML;
+        }else if(codeEval == ""){
+            currHTML = "No Result!"
+        }else if(codeEval == window){
+            currHTML = "Can't print the whole window object here!";
+        }else if(typeof codeEval == "undefined"){
+            currHTML = "successfully ran " + currCode;
+        }
+        else{
+            if(codeEval.outerHTML == null){
+                if(typeof codeEval == "object"){
+                    currHTML = JSON.stringify(codeEval);
+                }else{
+                    currHTML = codeEval;
+                }
+            }else{
+                currHTML = codeEval.outerHTML;
+            }
+        }
+
+        if(typeof currHTML == "number"){
+            currHTML = currHTML.toString();
+        }
+
+        for(var i = 0; i < currHTML.length; i++){
+            if(currHTML[i] == "<"){
+                strHTML += "&lt;"
+            }else{
+                strHTML += currHTML[i];
+            }
+        }
+
+        // console.log(strHTML);
+        codeResult.innerHTML = strHTML;
+
+        if(codeResult.clientHeight > 200){
+            codeResult.style.height = "200px";
+        }
+    }
+
+    function doCode(){
+        codeResult.innerHTML = "successfully executed: " + currCode;
+
+        try{
+            eval(currCode);
+        }catch(e){
+            if(e instanceof SyntaxError){
+                codeResult.innerHTML = "Syntax Error! Check your script again!";
+            }
+        }
+    }
+
+    var events;
+    var sDiv;
+    function applyEvent(){
+        events = document.getElementsByName('eVal');
+        sDiv = document.getElementById('square');
+
+        for(var i = 0; i < events.length; i++){
+            if(events[i].checked){
+                sDiv.setAttribute(events[i].id, chooseEvent(i));
+            }else{
+                sDiv.removeAttribute(events[i].id);
+            }
+        }
+
+        updateDivText();
+    }
+
+    function chooseEvent(i){
+        switch(i){
+            case 1:
+                return "dblclickEvent()";
+                break;
+            case 2:
+                return "onmouseoverEvent()";
+                break;
+            case 3:
+                return "onmouseoutEvent()";
+                break;
+            default:
+                return "clickEvent()";
+                break;
+        }
+    }
+
+    function updateDivText(){
+        var divEval = eval(sDiv).outerHTML;
+        var divHTML = "";
+        for(var i = 0; i < divEval.length; i++){
+            if(divEval[i] == "<"){
+                divHTML += "&lt;"
+            }else{
+                divHTML += divEval[i];
+            }
+        }
+
+        document.getElementById('currDiv').innerHTML = divHTML;
+    }
+
+    function clickEvent(){
+        sDiv.style.backgroundColor = "red";
+        updateDivText();
+    }
+
+    function dblclickEvent(){
+        sDiv.style.backgroundColor = "blue";
+        updateDivText();
+    }
+
+    function onmouseoverEvent(){
+        sDiv.style.border = "solid 5px green";
+        updateDivText();
+    }
+
+    function onmouseoutEvent(){
+        sDiv.style.border = "dotted 10px yellow";
+        updateDivText();
+    }
+
+    function onkeypressEvent(){
+        var keyVal = event.key;
+
+        if(keyVal == " "){
+            keyVal = "Space";
+        }
+
+        document.getElementById('keyInput').innerHTML = "You pressed: " +  keyVal;
+    }
+
+    function onkeydownEvent(){
+        document.getElementById('keyBox').style.backgroundColor = "pink";
+    }
+
+    function onkeyupEvent(){
+        document.getElementById('keyBox').style.backgroundColor = "lightblue";
+    }
+
+    function resetStyles(){
+        sDiv.removeAttribute('style');
+        updateDivText();
+    }
+
+</script>
+</html>
